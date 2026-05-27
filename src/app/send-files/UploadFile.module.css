@@ -2,10 +2,10 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap');
 
-/* =========================
-   1. THEME VARIABLES
-========================= */
-:global(body)[data-theme="dark"] {
+/* =================================
+   1. THEME VARIABLES (Next.js Pure)
+================================= */
+:global(body[data-theme="dark"]) .pageWrapper {
   --bg-page: #0b1120;
   --bg-card: #1e293b;
   --bg-surface: #334155;
@@ -29,7 +29,7 @@
   --shadow-input: inset 0 2px 4px 0 rgba(0, 0, 0, 0.3);
 }
 
-:global(body)[data-theme="light"] {
+:global(body[data-theme="light"]) .pageWrapper {
   --bg-page: #f8fafc;
   --bg-card: #ffffff;
   --bg-surface: #f1f5f9;
@@ -63,7 +63,8 @@
   font-family: 'Inter', sans-serif;
   padding-top: 0;
   overflow-x: hidden;
-  min-width: 100VW;
+  min-width: 100vw;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .container {
@@ -84,6 +85,7 @@
   grid-template-columns: 1.75fr 1fr;
   overflow: hidden;
   margin-bottom: 2rem;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
 }
 
 /* --- Left Column (Input) --- */
@@ -196,7 +198,7 @@
   color: var(--text-tertiary);
 }
 
-/* --- SELECTED FILES LIST (CRASH FIX) --- */
+/* --- SELECTED FILES LIST --- */
 .fileList {
   list-style: none;
   padding: 0;
@@ -204,7 +206,7 @@
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
-  width: 100%; /* Ensure full width usage */
+  width: 100%; 
 }
 
 .fileItem {
@@ -216,23 +218,18 @@
   border-radius: 6px;
   border: 1px solid var(--border-subtle);
   gap: 0.75rem;
-  
-  /* CRITICAL FIXES FOR MOBILE */
-  width: 100%;             /* Force it to fill the container */
-  box-sizing: border-box;  /* Include padding in width */
-  overflow: hidden;        /* Cut off overflow */
+  width: 100%;             
+  box-sizing: border-box;  
+  overflow: hidden;        
 }
 
 .fileName {
   color: var(--text-primary);
   font-family: 'JetBrains Mono', monospace;
   font-size: 0.85rem;
-
-  /* THE NUCLEAR OPTION FOR FLEXBOX TRUNCATION */
-  flex: 1 1 auto;      /* Grow and shrink allowed */
-  width: 0;            /* Forces browser to ignore content width */
-  min-width: 0;        /* Allows compression below content size */
-  
+  flex: 1 1 auto;      
+  width: 0;            
+  min-width: 0;        
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -247,8 +244,6 @@
   line-height: 1;
   cursor: pointer;
   padding: 0;
-  
-  /* Prevent button squashing */
   flex: 0 0 auto; 
   display: flex;
   align-items: center;
@@ -373,6 +368,7 @@
   flex-direction: column;
   border-left: 1px solid var(--border-subtle);
   text-align: left;
+  transition: background-color 0.3s ease;
 }
 
 /* Result Box */
@@ -458,7 +454,7 @@
 /* History List */
 .historyHeader {
   display: flex;
-  justify-content: space-between;
+  justify-space-between: space-between;
   align-items: center;
   margin-bottom: 0.75rem;
 }
@@ -558,13 +554,13 @@
 .seoArticle p, .seoArticle li { color: var(--text-secondary); line-height: 1.6; font-size: 0.95rem; }
 .seoArticle strong { color: var(--brand-primary); }
 
-/* =========================
-   5. RESPONSIVE DESIGN (BREAKPOINTS)
-========================= */
+/* Animations */
 @keyframes slideDown { from { opacity: 0; transform: translateY(-5px); } to { opacity: 1; transform: translateY(0); } }
 @keyframes popIn { 0% { opacity: 0; transform: scale(0.95); } 100% { opacity: 1; transform: scale(1); } }
 
-/* TABLET & MOBILE (Max Width 900px) */
+/* =========================
+   5. RESPONSIVE DESIGN
+========================= */
 @media (max-width: 900px) {
   .mainCard {
     grid-template-columns: 1fr;
@@ -590,7 +586,6 @@
   }
 }
 
-/* MOBILE SMALL (Max Width 600px) */
 @media (max-width: 600px) {
   .container {
     padding: 1rem 1rem;
@@ -601,7 +596,7 @@
   }
 
   .advancedFields {
-    grid-template-columns: 1fr; /* Stack inputs */
+    grid-template-columns: 1fr; 
   }
   
   .navLinks {
@@ -613,9 +608,8 @@
     padding: 0.5rem 0.8rem;
   }
 }
-/* =========================
-   AUTO FOCUS GLOW (NEW)
-========================= */
+
+/* Focus Pulse Glow */
 .focusGlow {
   animation: focusPulse 1.2s ease;
 }

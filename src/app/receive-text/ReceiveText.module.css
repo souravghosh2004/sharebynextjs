@@ -2,10 +2,10 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap');
 
-/* =========================
-   1. THEME VARIABLES
-========================= */
-:global(body)[data-theme="dark"] {
+/* =================================
+   1. THEME VARIABLES (Next.js Pure)
+================================= */
+:global(body[data-theme="dark"]) .pageWrapper {
   --bg-page: #0b1120;
   --bg-card: #1e293b;
   --bg-surface: #334155;
@@ -24,7 +24,7 @@
   --shadow-input: inset 0 2px 4px 0 rgba(0, 0, 0, 0.3);
 }
 
-:global(body)[data-theme="light"] {
+:global(body[data-theme="light"]) .pageWrapper {
   --bg-page: #f8fafc;
   --bg-card: #ffffff;
   --bg-surface: #f1f5f9;
@@ -55,6 +55,7 @@
   overflow-x: hidden;
   width: 100%;
   min-width: 100vw;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .container {
@@ -74,11 +75,11 @@
   border-radius: 12px;
   box-shadow: var(--shadow-card);
   display: grid;
-  /* Left (Input) | Right (Output) */
   grid-template-columns: 1.2fr 1.8fr; 
   overflow: hidden;
   margin-bottom: 2rem;
   align-items: stretch; 
+  transition: background-color 0.3s ease, border-color 0.3s ease;
 }
 
 /* --- Left Column (Input) --- */
@@ -87,13 +88,11 @@
   border-right: 1px solid var(--border-subtle);
   display: flex;
   flex-direction: column;
-  align-items: center; /* Horizontal Center */
+  align-items: center; 
   text-align: center;
   position: relative;
   height: 100%; 
   box-sizing: border-box;
-  
-  /* ✅ FIXED: Vertically Center Everything (Middle) */
   justify-content: center; 
 }
 
@@ -214,9 +213,8 @@
   transform: none;
 }
 
-/* --- Left Column Ad Container --- */
 .adSectionLeft {
-  margin-top: 2.5rem; /* Gap from button */
+  margin-top: 2.5rem; 
   width: 100%;
   display: flex;
   justify-content: center;
@@ -230,6 +228,7 @@
   padding: 2rem;
   display: flex;
   flex-direction: column;
+  transition: background-color 0.3s ease;
 }
 
 /* Placeholder */
@@ -239,12 +238,13 @@
   align-items: center;
   justify-content: center;
   flex-grow: 1;
-  min-height: 400px; /* Taller placeholder */
+  min-height: 400px; 
   border: 2px dashed var(--border-subtle);
   border-radius: 8px;
   color: var(--text-tertiary);
   gap: 1rem;
   background-color: var(--bg-card);
+  transition: background-color 0.3s ease, border-color 0.3s ease;
 }
 
 .placeholderIcon {
@@ -262,6 +262,7 @@
   flex-grow: 1;
   min-height: 400px;
   animation: popIn 0.3s ease-out;
+  transition: background-color 0.3s ease;
 }
 
 /* Toolbar */
@@ -455,7 +456,6 @@
   gap: 0.5rem;
 }
 
-/* Bottom Banner Ad */
 .adSectionMiddle {
   margin: 0.1rem auto 0.1rem auto;
   display: flex;

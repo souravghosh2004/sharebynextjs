@@ -3,7 +3,7 @@
 =========================== */
 
 /* 🌞 LIGHT MODE */
-body[data-theme="light"] {
+:global(body[data-theme="light"]) .mainContainer {
   --bg-card: #ffffff;
   --bg-left: #282a35;
 
@@ -19,7 +19,7 @@ body[data-theme="light"] {
 }
 
 /* 🌙 DARK MODE */
-body[data-theme="dark"] {
+:global(body[data-theme="dark"]) .mainContainer {
   --bg-card: #1e293b;
   --bg-left: #020617;
 
@@ -41,6 +41,7 @@ body[data-theme="dark"] {
   flex-direction: column;
   align-items: center;
   gap: 40px;
+  transition: background-color 0.3s ease;
 }
 
 /* ===== CARD CONTAINER ===== */
@@ -52,6 +53,7 @@ body[data-theme="dark"] {
   border-radius: 20px;
   box-shadow: 0 6px 20px var(--shadow);
   overflow: hidden;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 /* ===== LEFT PANEL ===== */
@@ -66,10 +68,12 @@ body[data-theme="dark"] {
   justify-content: center;
   align-items: center;
   text-align: center;
+  transition: background-color 0.3s ease;
 }
 
 .leftBox span {
   color: var(--accent);
+  transition: color 0.3s ease;
 }
 
 /* ===== RIGHT CONTENT ===== */
@@ -84,12 +88,14 @@ body[data-theme="dark"] {
   font-weight: 700;
   margin-bottom: 6px;
   color: var(--text-main);
+  transition: color 0.3s ease;
 }
 
 .updated {
   font-size: 14px;
   color: var(--text-muted);
   margin-bottom: 18px;
+  transition: color 0.3s ease;
 }
 
 /* ===== INTRO ===== */
@@ -98,6 +104,7 @@ body[data-theme="dark"] {
   color: var(--text-body);
   line-height: 1.75;
   margin-bottom: 24px;
+  transition: color 0.3s ease;
 }
 
 /* ===== SECTIONS ===== */
@@ -110,6 +117,7 @@ body[data-theme="dark"] {
   font-weight: 600;
   color: var(--accent);
   margin-bottom: 10px;
+  transition: color 0.3s ease;
 }
 
 /* ===== TEXT ===== */
@@ -117,6 +125,7 @@ body[data-theme="dark"] {
   font-size: 15px;
   color: var(--text-body);
   line-height: 1.7;
+  transition: color 0.3s ease;
 }
 
 /* ===== LISTS ===== */
@@ -130,10 +139,12 @@ body[data-theme="dark"] {
   color: var(--text-body);
   line-height: 1.7;
   margin-bottom: 6px;
+  transition: color 0.3s ease;
 }
 
 .section strong {
   color: var(--text-strong);
+  transition: color 0.3s ease;
 }
 
 /* ===== FAQ STYLE ===== */

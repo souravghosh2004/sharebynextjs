@@ -2,10 +2,10 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap');
 
-/* =========================
-   1. THEME VARIABLES
-========================= */
-:global(body)[data-theme="dark"] {
+/* =================================
+   1. THEME VARIABLES (Next.js Pure)
+================================= */
+:global(body[data-theme="dark"]) .pageWrapper {
   --bg-page: #0b1120;
   --bg-card: #1e293b;
   --bg-surface: #334155;
@@ -29,7 +29,7 @@
   --shadow-input: inset 0 2px 4px 0 rgba(0, 0, 0, 0.3);
 }
 
-:global(body)[data-theme="light"] {
+:global(body[data-theme="light"]) .pageWrapper {
   --bg-page: #f8fafc;
   --bg-card: #ffffff;
   --bg-surface: #f1f5f9;
@@ -65,12 +65,12 @@
   overflow-x: hidden;
   width: 100%;
   min-width: 100vw;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .container {
   max-width: 1280px;
   margin: 0 auto;
-  /* Optimized padding to sit closer to navbar */
   padding: 1rem 1.5rem 2rem 1.5rem;
   width: 100%;
   box-sizing: border-box;
@@ -85,10 +85,10 @@
   border-radius: 12px;
   box-shadow: var(--shadow-card);
   display: grid;
-  /* Desktop Ratio: Large Input Area / Smaller Sidebar */
   grid-template-columns: 1.75fr 1fr;
   overflow: hidden;
   margin-bottom: 2rem;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
 }
 
 /* --- Left Column (Input) --- */
@@ -97,8 +97,8 @@
   border-right: 1px solid var(--border-subtle);
   display: flex;
   flex-direction: column;
-  align-items: center; /* Center horizontally */
-  text-align: center;  /* Center text */
+  align-items: center; 
+  text-align: center;  
 }
 
 .title {
@@ -122,7 +122,7 @@
 .navLinks {
   display: flex;
   justify-content: center;
-  flex-wrap: wrap; /* Prevents overflow on mobile */
+  flex-wrap: wrap; 
   gap: 0.75rem;
   margin-bottom: 2rem;
   width: 100%;
@@ -157,7 +157,7 @@
   flex-direction: column;
   gap: 1.25rem;
   width: 100%;
-  max-width: 700px; /* Limits width on wide screens */
+  max-width: 700px; 
 }
 
 .textarea {
@@ -194,14 +194,14 @@
   border-radius: 8px;
   border: 1px solid var(--border-subtle);
   overflow: hidden;
-  text-align: left; /* Reset text alignment for form inputs */
+  text-align: left; 
 }
 
 .advancedToggleBtn {
   width: 100%;
   display: flex;
   align-items: center;
-  justify-content: space-between; /* Arrow on right */
+  justify-content: space-between; 
   padding: 0.75rem 1rem;
   background: none;
   border: none;
@@ -265,7 +265,7 @@
   width: 100%;
 }
 
-/* Primary Action Button (Dynamic Positioning) */
+/* Primary Action Button */
 .saveButton {
   background: var(--brand-primary);
   color: #ffffff;
@@ -281,8 +281,6 @@
   gap: 0.6rem;
   transition: all 0.2s ease;
   width: 100%;
-  
-  /* Dynamic spacing: sits nicely under form */
   margin-top: 0.5rem; 
   box-shadow: 0 4px 6px -1px rgba(20, 184, 166, 0.2);
 }
@@ -307,7 +305,8 @@
   display: flex;
   flex-direction: column;
   border-left: 1px solid var(--border-subtle);
-  text-align: left; /* Keep history left aligned */
+  text-align: left; 
+  transition: background-color 0.3s ease;
 }
 
 /* Result Box */
@@ -377,7 +376,7 @@
   opacity: 0.5;
 }
 
-/* Ad Containers (Responsive) */
+/* Ad Containers */
 .adSectionSidebar {
   display: flex;
   justify-content: center;
@@ -499,9 +498,7 @@
 .iconBtn:hover { background-color: var(--bg-input); color: var(--brand-primary); }
 .deleteBtn:hover { background-color: var(--danger-surface); color: var(--danger); }
 
-/* =========================
-   4. SEO FOOTER
-========================= */
+/* --- SEO Footer --- */
 .seoFooterContent {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -527,9 +524,7 @@
   color: var(--brand-primary);
 }
 
-/* =========================
-   5. ANIMATIONS
-========================= */
+/* Animations */
 @keyframes slideDown {
   from { opacity: 0; transform: translateY(-5px); }
   to { opacity: 1; transform: translateY(0); }
@@ -541,14 +536,13 @@
 }
 
 /* =========================
-   6. RESPONSIVE MEDIA QUERIES (The Fixes)
+   6. RESPONSIVE MEDIA QUERIES
 ========================= */
 
-/* Tablet & Mobile (Max Width 900px) */
 @media (max-width: 900px) {
   .mainCard {
-    grid-template-columns: 1fr; /* Stack into one column */
-    border-radius: 0; /* Full bleed on smaller screens */
+    grid-template-columns: 1fr; 
+    border-radius: 0; 
     border-left: none;
     border-right: none;
   }
@@ -556,20 +550,19 @@
   .leftColumn {
     border-right: none;
     border-bottom: 1px solid var(--border-subtle);
-    padding: 2.5rem 1.5rem; /* Less horizontal padding */
+    padding: 2.5rem 1.5rem; 
   }
 
   .rightColumn {
     border-left: none;
-    background-color: var(--bg-page); /* Distinct background when stacked */
+    background-color: var(--bg-page); 
     padding: 2rem 1.5rem;
   }
 }
 
-/* Small Mobile (Max Width 600px) */
 @media (max-width: 600px) {
   .container {
-    padding: 0.5rem 1rem 2rem 1rem; /* Reduce outer padding */
+    padding: 0.5rem 1rem 2rem 1rem; 
   }
 
   .title {
@@ -580,7 +573,6 @@
     padding: 1.5rem 1rem;
   }
 
-  /* Stack advanced fields vertically on small phones */
   .advancedFields {
     grid-template-columns: 1fr;
   }
@@ -590,15 +582,12 @@
     padding: 0.5rem 0.8rem;
   }
   
-  /* Make ad responsive */
   .adSectionSidebar {
     min-height: auto; 
   }
 }
 
-/* =========================
-   7. AUTO FOCUS GLOW (NEW)
-========================= */
+/* Focus Pulse Glow */
 .focusGlow {
   animation: focusPulse 1.2s ease;
 }

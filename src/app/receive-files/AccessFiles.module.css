@@ -2,10 +2,10 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap');
 
-/* =========================
-   1. THEME VARIABLES
-========================= */
-:global(body)[data-theme="dark"] {
+/* =================================
+   1. THEME VARIABLES (Next.js Pure)
+================================= */
+:global(body[data-theme="dark"]) .pageWrapper {
   --bg-page: #0b1120;
   --bg-card: #1e293b;
   --bg-surface: #334155;
@@ -24,7 +24,7 @@
   --shadow-input: inset 0 2px 4px 0 rgba(0, 0, 0, 0.3);
 }
 
-:global(body)[data-theme="light"] {
+:global(body[data-theme="light"]) .pageWrapper {
   --bg-page: #f8fafc;
   --bg-card: #ffffff;
   --bg-surface: #f1f5f9;
@@ -51,11 +51,11 @@
   background-color: var(--bg-page);
   color: var(--text-primary);
   font-family: 'Inter', sans-serif;
- 
   padding-top: 0;
   overflow-x: hidden;
   width: 100%;
   min-width: 100vw;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .container {
@@ -75,11 +75,11 @@
   border-radius: 12px;
   box-shadow: var(--shadow-card);
   display: grid;
-  /* Left (Input) | Right (Output/Files) */
   grid-template-columns: 1.2fr 1.8fr; 
   overflow: hidden;
   margin-bottom: 2rem;
   align-items: stretch; 
+  transition: background-color 0.3s ease, border-color 0.3s ease;
 }
 
 /* --- Left Column (Input) --- */
@@ -212,9 +212,8 @@
   transform: none;
 }
 
-/* --- Left Column Ad Container --- */
 .adSectionLeft {
-  margin-top: 3rem; /* Safe distance from button */
+  margin-top: 3rem; 
   width: 100%;
   display: flex;
   justify-content: center;
@@ -228,6 +227,7 @@
   padding: 2rem;
   display: flex;
   flex-direction: column;
+  transition: background-color 0.3s ease;
 }
 
 /* Placeholder State */
@@ -243,6 +243,7 @@
   color: var(--text-tertiary);
   gap: 1rem;
   background-color: var(--bg-card);
+  transition: background-color 0.3s ease, border-color 0.3s ease;
 }
 
 .placeholderIcon {
@@ -252,7 +253,6 @@
 /* --- File Grid --- */
 .grid {
   display: grid;
-  /* Auto-fill columns based on available width */
   grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
   gap: 1rem;
   width: 100%;
@@ -476,8 +476,9 @@
   justify-content: center;
   gap: 0.5rem;
 }
+
 .adSectionMiddle {
-  margin: 0.1rem auto 0.5rem 0.2;
+  margin: 0.1rem auto 0.5rem 0.2px;
   display: flex;
   justify-content: center;
   width: 100%;
@@ -485,6 +486,7 @@
   min-height: 90px;
   margin-bottom: 5px;
 }
+
 /* --- SEO Footer --- */
 .seoFooterContent {
   display: grid;
@@ -496,6 +498,7 @@
 .seoArticle h2 { font-size: 1.1rem; font-weight: 700; color: var(--text-primary); margin-bottom: 0.75rem; }
 .seoArticle p, .seoArticle li { color: var(--text-secondary); line-height: 1.6; font-size: 0.95rem; }
 .seoArticle strong { color: var(--brand-primary); }
+
 /* Animations */
 @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 @keyframes popIn { 0% { opacity: 0; transform: scale(0.95); } 100% { opacity: 1; transform: scale(1); } }
@@ -505,7 +508,6 @@
 /* =========================
    6. RESPONSIVE DESIGN
 ========================= */
-
 @media (max-width: 900px) {
   .mainCard { 
     grid-template-columns: 1fr; 
@@ -526,11 +528,10 @@
 
 @media (max-width: 600px) {
   .title { font-size: 1.5rem; }
-  .grid { grid-template-columns: 1fr; } /* Stack cards on mobile */
+  .grid { grid-template-columns: 1fr; } 
   .modalActions { grid-template-columns: 1fr; }
   
   .container {
     padding: 0.5rem 1rem 2rem 1rem;
   }
- 
 }
