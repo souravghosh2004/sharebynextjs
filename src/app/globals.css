@@ -123,3 +123,17 @@ iframe {
     transform: translateY(0); 
   }
 }
+
+/* ====================================
+   NAVBAR & MOBILE BAR LAYOUT SPACING
+==================================== */
+body {
+  padding-top: 70px;
+  padding-bottom: 80px; 
+}
+
+@media (min-width: 769px) {
+  body {
+    padding-bottom: 0;
+  }
+}

@@ -32,20 +32,6 @@
 }
 
 /* =========================
-   GLOBAL RESET FIX
-========================= */
-:global(body) {
-  padding-top: 70px;
-  padding-bottom: 80px; 
-}
-
-@media (min-width: 769px) {
-  :global(body) {
-    padding-bottom: 0;
-  }
-}
-
-/* =========================
    PART 1: TOP NAVBAR
 ========================= */
 .navbar {
