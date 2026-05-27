@@ -1,9 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
 
-/* =========================
-   THEME VARIABLES
-========================= */
-:global(body[data-theme="light"]) {
+/* =================================
+   1. THEME VARIABLES (Next.js Pure)
+================================= */
+:global(body[data-theme="light"]) .navbar,
+:global(body[data-theme="light"]) .mobileBottomBar {
   --nav-bg: rgba(255, 255, 255, 0.9);
   --nav-border: rgba(0, 0, 0, 0.08);
   --text-main: #1e293b;
@@ -16,7 +17,8 @@
   --divider: #e2e8f0;
 }
 
-:global(body[data-theme="dark"]) {
+:global(body[data-theme="dark"]) .navbar,
+:global(body[data-theme="dark"]) .mobileBottomBar {
   --nav-bg: rgba(15, 23, 42, 0.9);
   --nav-border: rgba(255, 255, 255, 0.1);
   --text-main: #f8fafc;
@@ -59,11 +61,12 @@
   z-index: 1000;
   display: flex;
   justify-content: center;
+  transition: background 0.3s ease, border-color 0.3s ease;
 }
 
 .navbarContent {
   width: 100%;
-  max-width: 1536px; /* Increased to fit larger standard screens better */
+  max-width: 1536px; 
   padding: 0 1.5rem;
   display: flex;
   justify-content: space-between;
@@ -81,13 +84,13 @@
 
 .logo:hover { opacity: 0.9; }
 
-/* ✅ FIXED: Perfectly Round Logo */
 .logoImg { 
   height: 42px; 
   width: 42px; 
-  border-radius: 50%; /* Makes it round */
-  object-fit: cover;  /* Prevents distortion */
+  border-radius: 50%; 
+  object-fit: cover;  
   border: 1px solid var(--nav-border);
+  transition: border-color 0.3s ease;
 }
 
 .logoText {
@@ -95,6 +98,7 @@
   font-weight: 800;
   color: var(--text-main);
   letter-spacing: -0.03em;
+  transition: color 0.3s ease;
 }
 
 /* DESKTOP NAV LINKS */
@@ -118,6 +122,7 @@
   text-decoration: none;
   color: var(--primary);
   font-weight: 600;
+  transition: color 0.3s ease;
 }
 
 /* RIGHT ACTIONS */
@@ -188,13 +193,13 @@
 }
 
 /* =========================
-   POPUP MENU (Fixed Styling)
+   POPUP MENU
 ========================= */
 .popupMenu {
   position: absolute;
   top: 55px;
   right: 0;
-  width: 240px; /* Slightly wider */
+  width: 240px; 
   background: var(--popup-bg);
   border: 1px solid var(--nav-border);
   border-radius: 12px;
@@ -203,7 +208,7 @@
   opacity: 0;
   transform: translateY(-10px);
   pointer-events: none;
-  transition: opacity 0.2s ease, transform 0.2s ease;
+  transition: opacity 0.2s ease, transform 0.2s ease, background 0.3s ease, border-color 0.3s ease;
   display: flex;
   flex-direction: column;
   overflow: hidden;
@@ -219,6 +224,7 @@
   padding: 1rem;
   border-bottom: 1px solid var(--divider);
   margin-bottom: 0.5rem;
+  transition: border-color 0.3s ease;
 }
 
 .userName {
@@ -226,6 +232,7 @@
   color: var(--text-main);
   font-size: 1rem;
   margin-bottom: 2px;
+  transition: color 0.3s ease;
 }
 
 .userEmail {
@@ -234,20 +241,21 @@
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+  transition: color 0.3s ease;
 }
 
 .divider {
   border: none;
   border-top: 1px solid var(--divider);
   margin: 0.5rem 0;
+  transition: border-color 0.3s ease;
 }
 
-/* ✅ FIXED: Robust Item Styling */
 .popupItem {
   display: flex;
   align-items: center;
   padding: 0.75rem 1rem;
-  color: var(--text-main); /* Ensure visibility */
+  color: var(--text-main); 
   text-decoration: none;
   font-size: 0.9rem;
   font-weight: 500;
@@ -262,7 +270,7 @@
 
 .popupItem:hover {
   background: var(--bg-hover);
-  color: var(--primary); /* Highlight on hover */
+  color: var(--primary); 
 }
 
 .logoutBtn {
@@ -303,18 +311,16 @@
     z-index: 999;
     padding-bottom: env(safe-area-inset-bottom);
     max-width: 100vw;
+    transition: background 0.3s ease, border-color 0.3s ease;
   }
 
-  /* Replaced 'composes' with comma separated selectors 
-     to maintain the exact styles without crashing Next.js 
-  */
   .mobileLink, .mobileActive {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     text-decoration: none;
-    font-size: 0.65rem; /* Polished font size */
+    font-size: 0.65rem; 
     gap: 4px;
     width: 100%;
     height: 100%;
@@ -328,6 +334,7 @@
   .mobileActive {
     color: var(--primary);
     font-weight: 600;
+    transition: color 0.3s ease;
   }
 
   .mobileIcon {
