@@ -1,0 +1,318 @@
+/* ===========================
+   THEME VARIABLES
+=========================== */
+
+/* 🌞 LIGHT MODE */
+:global(body[data-theme="light"]) .mainContainer {
+  --bg-main: #f8fafc;
+  --text-main-title: #111827;
+  --text-subtitle: #4b5563;
+  
+  --card-bg: #ffffff;
+  --card-title: #111827;
+  --card-text: #374151;
+  --card-shadow: rgba(0, 0, 0, 0.08);
+  --card-shadow-hover: rgba(59, 130, 246, 0.3);
+
+  --list-text: #374151;
+
+  --btn-secondary-bg: #f3f4f6;
+  --btn-secondary-text: #374151;
+  
+  --blue-hover: #2563eb;
+  --green-hover: #10b981;
+}
+
+/* 🌙 DARK MODE (Preserves your original colors) */
+:global(body[data-theme="dark"]) .mainContainer {
+  --bg-main: #282a35;
+  --text-main-title: #ffffff;
+  --text-subtitle: #adb3bf;
+  
+  --card-bg: #1e293b;
+  --card-title: #f9fafb;
+  --card-text: #d1d5db;
+  --card-shadow: rgba(0, 0, 0, 0.4);
+  --card-shadow-hover: rgba(59, 130, 246, 0.6);
+
+  --list-text: #d1d5db;
+
+  --btn-secondary-bg: #374151;
+  --btn-secondary-text: #f9fafb;
+  
+  --blue-hover: #60a5fa;
+  --green-hover: #34d399;
+}
+
+/* ===========================
+   STYLES
+=========================== */
+
+.mainContainer {
+  width: 100%;
+  background-color: var(--bg-main);
+  min-height: 100vh;
+  transition: background-color 0.3s ease;
+}
+
+/* ✅ DESKTOP: top space reduced */
+.homeContainer {
+  padding: 0.8rem 2rem 2rem 2rem; /* top right bottom left */
+}
+
+.mainTitle {
+  font-size: 48px;
+  font-weight: 700;
+  color: var(--text-main-title);
+  margin-top: 0; /* ✅ remove top margin */
+  margin-bottom: 0.2rem; /* ✅ reduced */
+  text-align: center;
+  display: block;
+  transition: color 0.3s ease;
+}
+
+.subtitle {
+  font-size: 20px;
+  color: var(--text-subtitle);
+  font-weight: 400;
+  margin: 0 auto 4rem auto; 
+  max-width: 600px;
+  line-height: 1.6;
+  text-align: center;
+  display: block;
+  transition: color 0.3s ease;
+}
+
+.section {
+  margin-bottom: 2rem;
+  display: flex;
+  justify-content: center;
+}
+
+.howToUse {
+  margin-bottom: 3rem;
+}
+
+.subTitle {
+  font-size: 1.6rem;
+  font-weight: 700;
+  margin-bottom: 0.8rem;
+  color: var(--card-title);
+  text-align: center;
+  transition: color 0.3s ease;
+}
+
+/* 👇 FIXED: Renamed 'ol' to '.orderedList' to satisfy Next.js */
+.orderedList {
+  text-align: left;
+  margin: 0 auto;
+  max-width: 600px;
+  color: var(--list-text);
+  line-height: 1.6;
+  transition: color 0.3s ease;
+}
+
+/* 🔥 Side by side layout */
+.cardContainer {
+  display: flex;
+  gap: 3rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.card {
+  background: var(--card-bg);
+  padding: 1.7rem 1.5rem;
+  border-radius: 16px;
+  box-shadow: 0 4px 14px var(--card-shadow);
+  width: 400px;
+  height: 380px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, background-color 0.3s ease;
+}
+
+.card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 24px var(--card-shadow-hover);
+}
+
+.cardText {
+  font-size: 1.1rem;
+  color: var(--card-text);
+  margin-bottom: 1.2rem;
+  text-align: center;
+  transition: color 0.3s ease;
+}
+
+.icon {
+  width: 70px;
+  height: 70px;
+  margin: 0 auto 0.8rem;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 26px;
+  color: #fff; /* Icon color inside colored box remains white */
+  transition: transform 0.3s ease;
+}
+
+.icon:hover {
+  transform: scale(1.15);
+}
+
+.blue {
+  background: #2563eb;
+}
+
+.green {
+  background: #10b981;
+}
+
+.buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  width: 100%;
+}
+
+/* Buttons */
+.btn {
+  width: 100%;
+  padding: 1rem 1rem;
+  border-radius: 999px;
+  border: none;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.primaryBtn {
+  background: #2563eb;
+  color: #fff;
+}
+
+.primaryBtn:hover {
+  background: #1d4ed8;
+}
+
+.secondaryBtn {
+  background: var(--btn-secondary-bg);
+  color: var(--btn-secondary-text);
+  border: 2px solid transparent;
+}
+
+.secondaryBtn:hover {
+  border: 2px solid var(--blue-hover);
+  color: var(--blue-hover);
+  background: transparent;
+}
+
+.textBtn {
+  background: #10b981;
+  color: #fff;
+}
+
+.textBtn:hover {
+  background: #059669;
+}
+
+.showTextBtn {
+  background: var(--btn-secondary-bg);
+  color: var(--btn-secondary-text);
+  border: 2px solid transparent;
+}
+
+.showTextBtn:hover {
+  border: 2px solid var(--green-hover);
+  color: var(--green-hover);
+  background: transparent;
+}
+
+/* ---------------- RESPONSIVE DESIGN ---------------- */
+
+/* Tablets (≤ 1024px) */
+@media (max-width: 1024px) {
+  .homeContainer {
+    padding: 1.6rem 1.6rem; 
+  }
+
+  .mainTitle {
+    font-size: 40px;
+  }
+
+  .subtitle {
+    font-size: 18px;
+    margin-bottom: 1.3rem;
+  }
+
+  .card {
+    width: 350px;
+    height: 360px;
+  }
+}
+
+/* Mobiles (≤ 768px) */
+@media (max-width: 768px) {
+  .homeContainer {
+    padding: 2.5rem 1.5rem; 
+  }
+
+  .mainTitle {
+    font-size: 32px;
+  }
+
+  .subtitle {
+    font-size: 16px;
+    margin-bottom: 2.5rem; 
+  }
+
+  .cardContainer {
+    flex-direction: column;
+    gap: 2rem;
+    align-items: center;
+  }
+
+  .card {
+    width: 100%;
+    max-width: 350px;
+    height: auto;
+  }
+
+  .cardText {
+    font-size: 1rem;
+  }
+}
+
+/* Small Phones (≤ 480px) */
+@media (max-width: 480px) {
+  .homeContainer {
+    padding: 2rem 1rem; 
+  }
+
+  .mainTitle {
+    font-size: 26px;
+  }
+
+  .subtitle {
+    font-size: 14px;
+  }
+
+  .card {
+    max-width: 300px;
+    padding: 1.5rem 1rem;
+  }
+
+  .cardText {
+    font-size: 0.95rem;
+  }
+
+  .btn {
+    font-size: 1rem;
+    padding: 0.9rem;
+  }
+}

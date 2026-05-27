@@ -1,0 +1,137 @@
+/* ===========================
+   THEME VARIABLES
+=========================== */
+
+/* 🌞 LIGHT MODE (Preserves your original design) */
+:global(body[data-theme="light"]) .container {
+  --bg-section: #e7e9eb;
+  --text-heading: #000000;
+  --text-subheading: #374151; /* Softened slightly for better readability */
+  
+  --btn-primary-bg: #282a35;
+  --btn-primary-text: #ffffff;
+  --btn-primary-hover: #000000;
+  
+  --btn-sec-border: #282a35;
+  --btn-sec-text: #282a35;
+  --btn-sec-hover-bg: rgba(0, 0, 0, 0.05);
+}
+
+/* 🌙 DARK MODE */
+:global(body[data-theme="dark"]) .container {
+  --bg-section: #1e293b; /* Deep SaaS dark gray for contrast */
+  --text-heading: #f9fafb;
+  --text-subheading: #d1d5db;
+  
+  --btn-primary-bg: #04aa6d; /* ShareBy Green for high visibility */
+  --btn-primary-text: #ffffff;
+  --btn-primary-hover: #028f59;
+  
+  --btn-sec-border: #ffffff;
+  --btn-sec-text: #ffffff;
+  --btn-sec-hover-bg: rgba(255, 255, 255, 0.1);
+}
+
+/* ===========================
+   STYLES
+=========================== */
+
+.container {
+  background-color: var(--bg-section);
+  text-align: center;
+  padding: 80px 20px;
+  color: var(--text-heading);
+  font-family: Arial, sans-serif;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.heading {
+  color: var(--text-heading);
+  font-weight: bold;
+  font-size: 48px;
+  margin-bottom: 10px;
+  transition: color 0.3s ease;
+}
+
+.subheading {
+  margin-top: 0;
+  margin-bottom: 30px;
+  font-size: 20px;
+  font-weight: 400;
+  color: var(--text-subheading);
+  transition: color 0.3s ease;
+}
+
+.buttonGroup {
+  display: inline-flex;
+  gap: 10px;
+}
+
+.button {
+  padding: 18px 25px;
+  font-size: 14px;
+  font-weight: 600;
+  border-radius: 7px;
+  cursor: pointer;
+  border: none;
+  transition: all 0.2s ease;
+}
+
+/* Primary Button */
+.primaryButton {
+  background-color: var(--btn-primary-bg);
+  color: var(--btn-primary-text);
+}
+
+.primaryButton:hover {
+  background-color: var(--btn-primary-hover);
+  transform: translateY(-2px); /* Added slight lift on hover */
+}
+
+/* Secondary Button */
+.secondaryButton {
+  background-color: transparent;
+  border: 1.5px solid var(--btn-sec-border);
+  color: var(--btn-sec-text);
+}
+
+.secondaryButton:hover {
+  background-color: var(--btn-sec-hover-bg);
+  transform: translateY(-2px); /* Added slight lift on hover */
+}
+
+/* ---------------- RESPONSIVE DESIGN ---------------- */
+/* Adding quick responsive tweaks just in case */
+
+@media (max-width: 768px) {
+  .heading {
+    font-size: 36px;
+  }
+  .subheading {
+    font-size: 18px;
+  }
+  .buttonGroup {
+    flex-direction: column;
+    width: 100%;
+    max-width: 300px;
+  }
+  .button {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 60px 15px;
+  }
+  .heading {
+    font-size: 28px;
+  }
+  .subheading {
+    font-size: 16px;
+  }
+}

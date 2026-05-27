@@ -1,0 +1,58 @@
+# 1. Allow Google/Bing for SEO (Good Bots)
+User-agent: Googlebot
+Allow: /
+User-agent: Bingbot
+Allow: /
+
+# 2. BLOCK AI & LLM Scrapers (Protect User Data)
+# Block OpenAI (ChatGPT training data)
+User-agent: GPTBot
+Disallow: /
+
+# Block ChatGPT Browsing Plugin (Live browsing)
+User-agent: ChatGPT-User
+Disallow: /
+
+# Block Common Crawl (Used by many AIs to train)
+User-agent: CCBot
+Disallow: /
+
+# Block Anthropic (Claude)
+User-agent: AnthropicAI
+Disallow: /
+User-agent: Claude-Web
+Disallow: /
+
+# Block Google's AI training (separate from Search)
+User-agent: Google-Extended
+Disallow: /
+
+# 3. General Rules for Everyone Else
+User-agent: *
+
+# Block Private Areas
+Disallow: /login
+Disallow: /register
+Disallow: /dashboard
+Disallow: /auth/
+Disallow: /admin/
+Disallow: /api/
+
+# 🚨 CRITICAL: Prevent bots from guessing file codes
+Disallow: /*?code=
+Disallow: /*?userId=
+Disallow: /receive-files/
+Disallow: /receive-text/
+
+# Allow Public SEO Landing Pages
+Allow: /send-files
+Allow: /send-text
+Allow: /scan
+Allow: /print-files
+Allow: /about
+Allow: /features
+Allow: /privacy-policy
+Allow: /terms
+Allow: /
+
+Sitemap: https://shareby.io/sitemap.xml

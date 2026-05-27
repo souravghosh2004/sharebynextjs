@@ -1,0 +1,254 @@
+/* ===========================
+   THEME VARIABLES
+=========================== */
+
+/* 🌞 LIGHT MODE (Default) */
+.featuresSection {
+  --feat-bg: #f8fafc;
+  --feat-head: #111827;
+  --feat-sub: #4b5563;
+  
+  --card-bg: #ffffff;
+  --card-border: rgba(0, 0, 0, 0.08);
+  --card-shadow: rgba(0, 0, 0, 0.08);
+  --card-title: #111827;
+  --card-desc: #6b7280;
+  
+  --icon-bg: #eff6ff;
+  --icon-color: #3b82f6;
+
+  --cyber-bg: rgba(0, 0, 0, 0.04);
+  --cyber-border: rgba(0, 0, 0, 0.1);
+  --cyber-title: #111827;
+  --cyber-desc: #4b5563;
+}
+
+/* 🌙 DARK MODE */
+:global(body[data-theme="dark"]) .featuresSection {
+  --feat-bg: #282A35;
+  --feat-head: #ffffff;
+  --feat-sub: #e5e7eb;
+  
+  --card-bg: #1e293b;
+  --card-border: rgba(255, 255, 255, 0.08);
+  --card-shadow: rgba(0, 0, 0, 0.3);
+  --card-title: #f8fafc;
+  --card-desc: #9ca3af;
+  
+  --icon-bg: rgba(59, 130, 246, 0.15);
+  --icon-color: #60a5fa;
+
+  --cyber-bg: rgba(255, 255, 255, 0.06);
+  --cyber-border: rgba(255, 255, 255, 0.12);
+  --cyber-title: #ffffff;
+  --cyber-desc: #e5e7eb;
+}
+
+/* ===========================
+   STYLES
+=========================== */
+
+.featuresSection {
+  text-align: center;
+  padding: 60px 134px;
+  background: var(--feat-bg);
+  transition: background 0.3s ease;
+}
+
+.heading {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--feat-head);
+}
+
+.subHeading {
+  margin-top: 10px;
+  font-size: 1rem;
+  color: var(--feat-sub);
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.grid {
+  margin-top: 40px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+  justify-items: center;
+}
+
+.card {
+  background: var(--card-bg);
+  border-radius: 16px;
+  padding: 28px;
+  border: 1px solid var(--card-border);
+  box-shadow: 0 10px 25px var(--card-shadow);
+  height: 200px;
+  transition: transform 0.2s ease, background 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-6px);
+}
+
+.icon {
+  width: 2.5rem;
+  height: 2.5rem;
+  background-color: var(--icon-bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.375rem;
+  color: var(--icon-color);
+  font-size: 1.2rem;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+.card h3 {
+  font-weight: 600;
+  font-size: 1.1rem;
+  color: var(--card-title);
+  margin-top: 16px; /* Added spacing to separate icon and text */
+}
+
+.card p {
+  font-size: 0.95rem;
+  color: var(--card-desc);
+  line-height: 1.4;
+  text-align: left;
+  margin-top: 8px;
+}
+
+.seoText {
+  margin: 16px auto 40px;
+  max-width: 700px;
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--feat-sub);
+}
+
+/* ===========================
+   CYBER CAFE HIGHLIGHT
+=========================== */
+
+.cyberCafe {
+  margin-top: 48px;
+  padding: 28px 32px;
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+  background: var(--cyber-bg);
+  border: 1px solid var(--cyber-border);
+  border-radius: 14px;
+  transition: background 0.3s ease, border 0.3s ease;
+}
+
+.cyberIcon {
+  font-size: 2rem;
+  color: #22c55e; /* Kept ShareBy green */
+  flex-shrink: 0;
+  margin-top: 4px;
+}
+
+.cyberTitle {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--cyber-title);
+  margin-bottom: 6px;
+  text-align: left;
+}
+
+.cyberDesc {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: var(--cyber-desc);
+  text-align: left;
+}
+
+/* ===========================
+   RESPONSIVE DESIGN
+=========================== */
+
+/* Tablet (<=1024px) */
+@media (max-width: 1024px) {
+  .featuresSection {
+    padding: 50px 60px;
+  }
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+  }
+  .card {
+    height: auto; 
+  }
+  .cyberCafe {
+    padding: 24px;
+  }
+}
+
+/* Mobile (<=768px) */
+@media (max-width: 768px) {
+  .featuresSection {
+    padding: 40px 30px;
+  }
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  .heading {
+    font-size: 1.6rem;
+  }
+  .subHeading {
+    font-size: 0.9rem;
+  }
+  .card {
+    padding: 24px;
+    height: auto;
+    gap: 12px;
+  }
+  .cyberCafe {
+    flex-direction: column;
+    gap: 12px;
+    padding: 20px;
+    text-align: left;
+  }
+  .cyberIcon {
+    font-size: 1.8rem;
+  }
+  .cyberTitle {
+    font-size: 1.1rem;
+  }
+  .cyberDesc {
+    font-size: 0.9rem;
+  }
+}
+
+/* Small Mobile (<=480px) */
+@media (max-width: 480px) {
+  .featuresSection {
+    padding: 30px 16px;
+  }
+  .heading {
+    font-size: 1.4rem;
+  }
+  .subHeading {
+    font-size: 0.85rem;
+  }
+  .card {
+    padding: 20px;
+    height: auto;
+  }
+  .card h3 {
+    font-size: 1rem;
+  }
+  .card p {
+    font-size: 0.85rem;
+  }
+  .cyberCafe {
+    padding: 16px;
+  }
+}

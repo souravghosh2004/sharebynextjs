@@ -1,0 +1,340 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+/* =========================
+   THEME VARIABLES
+========================= */
+:global(body[data-theme="light"]) {
+  --nav-bg: rgba(255, 255, 255, 0.9);
+  --nav-border: rgba(0, 0, 0, 0.08);
+  --text-main: #1e293b;
+  --text-muted: #64748b;
+  --primary: #10b981;
+  --primary-hover: #059669;
+  --bg-hover: #f1f5f9;
+  --popup-bg: #ffffff;
+  --shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  --divider: #e2e8f0;
+}
+
+:global(body[data-theme="dark"]) {
+  --nav-bg: rgba(15, 23, 42, 0.9);
+  --nav-border: rgba(255, 255, 255, 0.1);
+  --text-main: #f8fafc;
+  --text-muted: #94a3b8;
+  --primary: #34d399;
+  --primary-hover: #10b981;
+  --bg-hover: #334155;
+  --popup-bg: #1e293b;
+  --shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+  --divider: #334155;
+}
+
+/* =========================
+   GLOBAL RESET FIX
+========================= */
+:global(body) {
+  padding-top: 70px;
+  padding-bottom: 80px; 
+}
+
+@media (min-width: 769px) {
+  :global(body) {
+    padding-bottom: 0;
+  }
+}
+
+/* =========================
+   PART 1: TOP NAVBAR
+========================= */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 70px;
+  background: var(--nav-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--nav-border);
+  z-index: 1000;
+  display: flex;
+  justify-content: center;
+}
+
+.navbarContent {
+  width: 100%;
+  max-width: 1536px; /* Increased to fit larger standard screens better */
+  padding: 0 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* LOGO */
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+  transition: opacity 0.2s;
+}
+
+.logo:hover { opacity: 0.9; }
+
+/* ✅ FIXED: Perfectly Round Logo */
+.logoImg { 
+  height: 42px; 
+  width: 42px; 
+  border-radius: 50%; /* Makes it round */
+  object-fit: cover;  /* Prevents distortion */
+  border: 1px solid var(--nav-border);
+}
+
+.logoText {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--text-main);
+  letter-spacing: -0.03em;
+}
+
+/* DESKTOP NAV LINKS */
+.desktopNav {
+  display: flex;
+  gap: 2rem;
+  list-style: none;
+}
+
+.link {
+  text-decoration: none;
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+
+.link:hover { color: var(--text-main); }
+
+.activeLink {
+  text-decoration: none;
+  color: var(--primary);
+  font-weight: 600;
+}
+
+/* RIGHT ACTIONS */
+.rightActions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  position: relative;
+}
+
+/* Theme Button */
+.themeBtn {
+  background: transparent;
+  border: none;
+  color: var(--text-muted);
+  font-size: 1.2rem;
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s, color 0.2s;
+}
+
+.themeBtn:hover {
+  background: var(--bg-hover);
+  color: var(--primary);
+}
+
+/* Login Button */
+.loginBtn {
+  text-decoration: none;
+  background: var(--primary);
+  color: #fff;
+  padding: 0.5rem 1.2rem;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  transition: background 0.2s, transform 0.1s;
+}
+
+.loginBtn:hover {
+  background: var(--primary-hover);
+  transform: translateY(-1px);
+}
+
+/* User Avatar */
+.userAvatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--primary), #059669);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 1.1rem;
+  cursor: pointer;
+  user-select: none;
+  border: 2px solid transparent;
+  transition: box-shadow 0.2s;
+}
+
+.userAvatar:hover {
+  box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.2);
+}
+
+/* =========================
+   POPUP MENU (Fixed Styling)
+========================= */
+.popupMenu {
+  position: absolute;
+  top: 55px;
+  right: 0;
+  width: 240px; /* Slightly wider */
+  background: var(--popup-bg);
+  border: 1px solid var(--nav-border);
+  border-radius: 12px;
+  box-shadow: var(--shadow);
+  padding: 0.5rem;
+  opacity: 0;
+  transform: translateY(-10px);
+  pointer-events: none;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.showMenu {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.userInfo {
+  padding: 1rem;
+  border-bottom: 1px solid var(--divider);
+  margin-bottom: 0.5rem;
+}
+
+.userName {
+  font-weight: 700;
+  color: var(--text-main);
+  font-size: 1rem;
+  margin-bottom: 2px;
+}
+
+.userEmail {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.divider {
+  border: none;
+  border-top: 1px solid var(--divider);
+  margin: 0.5rem 0;
+}
+
+/* ✅ FIXED: Robust Item Styling */
+.popupItem {
+  display: flex;
+  align-items: center;
+  padding: 0.75rem 1rem;
+  color: var(--text-main); /* Ensure visibility */
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 500;
+  border-radius: 8px;
+  transition: all 0.2s;
+  cursor: pointer;
+  background: transparent;
+  border: none;
+  text-align: left;
+  width: 100%;
+}
+
+.popupItem:hover {
+  background: var(--bg-hover);
+  color: var(--primary); /* Highlight on hover */
+}
+
+.logoutBtn {
+  color: #ef4444; 
+  margin-top: 0.2rem;
+}
+
+.logoutBtn:hover {
+  background: rgba(239, 68, 68, 0.1);
+  color: #dc2626;
+}
+
+/* =========================
+   PART 2: MOBILE BOTTOM BAR
+========================= */
+.mobileBottomBar {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .desktopNav { display: none; }
+  .navbar { height: 60px; }
+  .logoText { font-size: 1.2rem; }
+  
+  .mobileBottomBar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 65px;
+    background: var(--nav-bg);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-top: 1px solid var(--nav-border);
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    z-index: 999;
+    padding-bottom: env(safe-area-inset-bottom);
+    max-width: 100vw;
+  }
+
+  /* Replaced 'composes' with comma separated selectors 
+     to maintain the exact styles without crashing Next.js 
+  */
+  .mobileLink, .mobileActive {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    font-size: 0.65rem; /* Polished font size */
+    gap: 4px;
+    width: 100%;
+    height: 100%;
+    transition: color 0.2s;
+  }
+
+  .mobileLink {
+    color: var(--text-muted);
+  }
+
+  .mobileActive {
+    color: var(--primary);
+    font-weight: 600;
+  }
+
+  .mobileIcon {
+    font-size: 1.4rem;
+  }
+  
+  .rotateIcon {
+    transform: rotate(180deg);
+  }
+}

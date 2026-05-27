@@ -1,0 +1,275 @@
+/* ===========================
+   THEME VARIABLES
+=========================== */
+
+/* 🌞 LIGHT MODE */
+:global(body[data-theme="light"]) .footer {
+  --footer-bg: #f8fafc;
+  --footer-text: #1e293b;
+  --footer-text-muted: #64748b;
+  --footer-link: #475569;
+  --footer-accent: #04aa6d; /* ShareBy Green for visibility in light mode */
+  --footer-border: #e2e8f0;
+  
+  --name-link: #04aa6d;
+  --name-link-hover: #028f59;
+}
+
+/* 🌙 DARK MODE (Preserves your exact original colors) */
+:global(body[data-theme="dark"]) .footer {
+  --footer-bg: #282a35;
+  --footer-text: #ffffff;
+  --footer-text-muted: #ffffffcc;
+  --footer-link: #ffffff;
+  --footer-accent: #fff4a3; /* Original yellow accent */
+  --footer-border: rgba(255, 255, 255, 0.1); /* Softened from #ddd for better dark mode blending */
+  
+  --name-link: #04aa6d;
+  --name-link-hover: #028f59;
+}
+
+/* ===========================
+   STYLES
+=========================== */
+
+.footer {
+  width: 100%;
+  box-sizing: border-box; /* ✅ Prevents padding from stretching the width */
+  overflow-x: hidden; /* ✅ Safely clips any rogue horizontal overflow */
+  background-color: var(--footer-bg);
+  padding: 40px 20px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 14px;
+  color: var(--footer-text);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  max-width: 1040px;
+  margin: 0 auto 30px auto;
+  gap: 40px;
+}
+
+/* Left section */
+.left {
+  flex: 1 1 300px;
+  max-width: 460px;
+}
+
+.logoContainer {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.logo {
+  width: 32px;
+  height: 32px;
+  margin-right: 8px;
+}
+
+.logoText {
+  font-weight: bold;
+  font-size: 22px;
+  color: var(--footer-text);
+  transition: color 0.3s ease;
+}
+
+.description {
+  line-height: 1.7;
+  color: var(--footer-text-muted);
+  font-size: 0.95rem;
+  transition: color 0.3s ease;
+}
+
+/* Links section */
+.links {
+  display: flex;
+  flex: 1 1 300px;
+  justify-content: space-around;
+  gap: 40px;
+}
+
+.heading {
+  font-weight: 600;
+  margin-bottom: 10px;
+  color: var(--footer-text);
+  font-size: 1rem;
+  transition: color 0.3s ease;
+}
+
+.links ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  line-height: 2;
+}
+
+.links a {
+  text-decoration: none;
+  color: var(--footer-link);
+  font-size: 1rem;
+  transition: color 0.2s ease;
+}
+
+.links a:hover {
+  color: var(--footer-accent);
+}
+
+/* Bottom bar */
+.bottom {
+  border-top: 1px solid var(--footer-border);
+  padding-top: 15px;
+  max-width: 1040px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  font-size: 13px;
+  color: var(--footer-text-muted);
+  transition: border-color 0.3s ease, color 0.3s ease;
+}
+
+.rights {
+  font-size: 0.95rem;
+  color: var(--footer-text);
+  transition: color 0.3s ease;
+}
+
+.made {
+  margin-left: 6px;
+  text-decoration: none;
+  color: var(--footer-accent);
+  font-weight: 500;
+  font-size: 1.1rem;
+  transition: color 0.3s ease;
+}
+
+/* Social Icons */
+.social {
+  display: flex;
+  gap: 20px;
+}
+
+.socialLink {
+  display: inline-block;
+  transition: transform 0.2s ease;
+}
+
+.socialLink:hover {
+  transform: scale(1.2);
+}
+
+.nameLink {
+  color: var(--name-link);
+  font-weight: 600;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.nameLink:hover {
+  color: var(--name-link-hover);
+  text-decoration: underline;
+}
+
+.version {
+  color: var(--footer-text);
+  font-size: 13px;
+  margin-top: -10px;
+  margin-bottom: 10px;
+  text-align: center;
+  opacity: 0.9;
+  transition: color 0.3s ease;
+}
+
+/* ===================== */
+/* Responsive Styles */
+/* ===================== */
+
+/* Tablet (<=1024px) */
+@media (max-width: 1024px) {
+  .container {
+    gap: 30px;
+    margin-bottom: 70px;
+  }
+  .links {
+    gap: 30px;
+  }
+  .logoText {
+    font-size: 20px;
+  }
+  .description {
+    font-size: 0.95rem;
+    text-align: left;
+  }
+}
+
+/* Mobile (<=768px) */
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 30px;
+  }
+  
+  /* ✅ Force elements to take up standard mobile width instead of 300px flex-basis */
+  .left, .links {
+    flex: 1 1 100%; 
+    max-width: 100%;
+  }
+
+  .links {
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    width: 100%;
+  }
+
+  .links ul {
+    line-height: 1.8;
+  }
+  
+  .bottom {
+    flex-direction: column;
+    text-align: center;
+    gap: 12px;
+  }
+  
+  .logoContainer {
+    justify-content: center;
+  }
+  
+  .description {
+    text-align: center;
+  }
+}
+
+/* Small Mobile (<=480px) */
+@media (max-width: 480px) {
+  .footer {
+    padding: 30px 15px;
+  }
+  .logoText {
+    font-size: 18px;
+  }
+  .description {
+    font-size: 0.9rem;
+  }
+  .links a {
+    font-size: 0.9rem;
+  }
+  .made {
+    font-size: 1rem;
+  }
+  .logoContainer {
+    justify-content: center;
+  }
+  .description {
+    text-align: center;
+  }
+}

@@ -1,0 +1,244 @@
+/* ===========================
+   THEME VARIABLES
+=========================== */
+
+/* 🌞 LIGHT MODE */
+:global(body[data-theme="light"]) .container {
+  --bg-container: #e7e9eb;
+  --text-title: #111827;
+  --text-subtitle: #6b7280;
+  --text-body: #374151;
+  
+  --icon-shadow: rgba(0, 0, 0, 0.1);
+  --icon-shadow-hover: rgba(0, 0, 0, 0.15);
+  
+  --link-blue: #2563eb;
+  --link-green: #059669;
+}
+
+/* 🌙 DARK MODE */
+:global(body[data-theme="dark"]) .container {
+  --bg-container: #1e293b; /* Deep SaaS dark gray for contrast */
+  --text-title: #f9fafb;
+  --text-subtitle: #9ca3af;
+  --text-body: #d1d5db;
+  
+  --icon-shadow: rgba(0, 0, 0, 0.4);
+  --icon-shadow-hover: rgba(0, 0, 0, 0.6);
+  
+  --link-blue: #60a5fa; /* Brighter blue for dark mode readability */
+  --link-green: #34d399; /* Brighter green for dark mode readability */
+}
+
+/* ===========================
+   STYLES
+=========================== */
+
+.container {
+  text-align: center;
+  padding: 5rem 2rem;
+  background: var(--bg-container);
+  transition: background-color 0.3s ease;
+}
+
+.title {
+  font-size: 42px;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  color: var(--text-title); 
+  transition: color 0.3s ease;
+}
+
+.subtitle {
+  font-size: 20px;
+  color: var(--text-subtitle);
+  font-weight: 400;
+  margin: 0 auto 3.5rem auto;
+  max-width: 600px;
+  line-height: 1.6;
+  text-align: center;
+  display: block;
+  transition: color 0.3s ease;
+}
+
+.steps {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+  padding: 0 4rem;
+}
+
+.step {
+  flex: 1 1 250px;
+  max-width: 340px;
+  /* max-height: 170px; */
+}
+
+.icon {
+  width: 84px;
+  height: 84px;
+  margin: 0 auto 1rem;
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 28px;
+  box-shadow: 0 4px 12px var(--icon-shadow);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.icon:hover {
+  transform: scale(1.08);
+  box-shadow: 0 6px 16px var(--icon-shadow-hover);
+  cursor: pointer;
+}
+
+/* Base icon colors stay consistent across themes as they are brand elements */
+.blue {
+  background: #2563eb; 
+}
+
+.purple {
+  background: #8b5cf6; 
+}
+
+.green {
+  background: #10b981; 
+}
+
+.svgIcon {
+  font-size: 28px;
+}
+
+.step h3 {
+  font-size: 22px;
+  margin-bottom: 0.5rem;
+  color: var(--text-title);
+  font-weight: 400;
+  transition: color 0.3s ease;
+}
+
+.step p {
+  font-size: 18px;
+  color: var(--text-body);
+  line-height: 1.4;
+  transition: color 0.3s ease;
+}
+
+.linkBlue {
+  color: var(--link-blue);
+  font-weight: 500;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.linkGreen {
+  color: var(--link-green);
+  font-weight: 500;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.linkBlue:hover,
+.linkGreen:hover {
+  text-decoration: underline;
+}
+
+.seoText {
+  max-width: 800px;
+  margin: 1.5rem auto 3rem;
+  font-size: 16px;
+  line-height: 1.7;
+  color: var(--text-body);
+  transition: color 0.3s ease;
+}
+
+/* ===================== */
+/* Responsive Styles */
+/* ===================== */
+
+/* Tablet (<=1024px) */
+@media (max-width: 1024px) {
+  .title {
+    font-size: 36px;
+  }
+  .subtitle {
+    font-size: 18px;
+    margin-bottom: 2.5rem;
+  }
+  .steps {
+    padding: 0 2rem;
+    gap: 1.5rem;
+  }
+  .step h3 {
+    font-size: 20px;
+  }
+  .step p {
+    font-size: 16px;
+  }
+}
+
+/* Mobile (<=768px) */
+@media (max-width: 768px) {
+  .container {
+    padding: 3.5rem 1.5rem;
+  }
+  .title {
+    font-size: 30px;
+  }
+  .subtitle {
+    font-size: 16px;
+    margin-bottom: 2rem;
+    line-height: 1.5;
+  }
+  .steps {
+    flex-direction: column;
+    padding: 0 1rem;
+  }
+  .step {
+    max-width: 100%;
+    max-height: 170px;
+  }
+  .icon {
+    width: 70px;
+    height: 70px;
+    font-size: 24px;
+  }
+  .step h3 {
+    font-size: 18px;
+  }
+  .step p {
+    font-size: 15px;
+  }
+}
+
+/* Small Mobile (<=480px) */
+@media (max-width: 480px) {
+  .container {
+    padding: 2.5rem 1rem;
+    margin-top: 20px;
+  }
+  .title {
+    font-size: 24px;
+  }
+  .subtitle {
+    font-size: 14px;
+    margin-bottom: 1.5rem;
+  }
+  .icon {
+    width: 60px;
+    height: 60px;
+    font-size: 20px;
+  }
+  .step {
+    max-height: 170px;
+  }
+  .step h3 {
+    font-size: 16px;
+  }
+  .step p {
+    font-size: 14px;
+  }
+}
